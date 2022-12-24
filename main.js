@@ -24,15 +24,19 @@ function hint() {
     if (op.innerHTML === '+') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 + n2}</span>`;
+        score -= 4;
     } else if (op.innerHTML === '−') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 - n2}</span>`;
+        score -= 4;
     } else if (op.innerHTML === '×') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 * n2}</span>`;
+        score -= 4;
     } else if (op.innerHTML === '÷') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 / n2}</span>`;
+        score -= 4;
     } else {
         msg.innerHTML = "Please choose operator";
     }
@@ -52,7 +56,6 @@ show.addEventListener('click', () => {
         } else {
             // show.innerHTML = 'Hide answer';
             hint();
-            score -= 4;
         }
         
     }
@@ -178,7 +181,7 @@ btn.addEventListener('click', () => {
     }
 
     document.querySelector('#ans').value = '';
-    
+
     if (score <= 0) {
         alert('Game Over!');
         location.reload();
