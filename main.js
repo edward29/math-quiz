@@ -35,7 +35,7 @@ function hint() {
         score -= 4;
     } else if (op.innerHTML === '÷') {
         show.innerHTML = 'Hide answer';
-        solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 / n2}</span>`;
+        solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${(n1 / n2).toFixed(2)}</span>`;
         score -= 4;
     } else {
         msg.innerHTML = "Please choose operator";
