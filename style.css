@@ -1,0 +1,280 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-image: repeating-linear-gradient(0deg, rgba(219, 219, 219,0.2) 0px, rgba(219, 219, 219,0.2) 1px,transparent 1px, transparent 21px),repeating-linear-gradient(90deg, rgba(219, 219, 219,0.2) 0px, rgba(219, 219, 219,0.2) 1px,transparent 1px, transparent 21px),linear-gradient(90deg, #f4f4f9,#f4f4f9);
+}
+
+.con {
+    width: 310px;
+    height: auto;
+    background: #f4f4f97d;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+h1 {
+    padding: 20px 0 0;
+    margin: 10px auto 0;
+    font-size: 3rem;
+    color: #04724d;
+    text-shadow: 1px 1px #000;
+    text-align: center;
+}
+
+.con > p {
+    text-align: center;
+    font-size: 15px;
+    padding: 0 10px;
+    margin-top: -5px;
+    color: #586f7c;
+}
+
+#dropdown {
+    border: none;
+    display: block;
+    margin: 30px auto 5px;
+    font-size: 1.5rem;
+    background: #b8dbd9;
+    border-radius: 10px;
+    padding: 0 30px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+#totalScore,
+#num1,
+#num2,
+#ans,
+#op,
+#sol {
+    font-family: 'technologyregular', Arial, sans-serif;
+    font-weight: 800;
+}
+
+.score {
+    padding: 10px 30px 10px;
+}
+
+.score #score {
+    font-size: 2rem;
+}
+
+.numbers {
+    margin: 10px auto;
+    padding: 10px;
+    border: 4px #000 dashed;
+    border-radius: 8px;
+    width: 250px;
+}
+
+.numbers > span {
+    font-size: 3rem;
+}
+
+.group {
+    display: block;
+    margin: 30px auto 10px;
+    width: 250px;
+    position: relative;
+}
+
+.input {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+}
+
+.input:focus {
+    outline: none;
+}
+   
+label {
+    color: #586f7c;
+    font-size: 1.5rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+   
+.input:focus ~ label, .input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #04724d;
+}
+   
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+   
+.bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #04724d;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+   
+.bar:before {
+    left: 50%;
+}
+   
+.bar:after {
+    right: 50%;
+}
+   
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+    width: 50%;
+}
+   
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+   
+.input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+}
+   
+@keyframes inputHighlighter {
+    from {
+        background: #04724d;
+    }
+   
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+.cta {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    border-radius: 50px;
+    background: #04724d39;
+    cursor: pointer;
+}
+   
+.cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #b8dbd9;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+}
+   
+.cta span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #515151;
+    transition: all .3 ease;
+}
+
+.cta:hover span {
+    color: #f4f4f9;
+}
+   
+.cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #515151;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+   
+.cta:hover:before {
+    width: 100%;
+    background: #04724d;
+}
+   
+.cta:hover svg {
+    transform: translateX(0);
+    stroke: #f4f4f9;
+}
+
+.cta:active,
+.show:active {
+    transform: scale(0.95);
+}
+
+#msg {
+    text-align: center;
+    margin: 30px 0 10px;
+    font-size: 1.2rem;
+}
+
+.correct {
+    color: #04724d;
+}
+
+.wrong {
+    color: #c70f0f;
+}
+
+.show {
+    background-color: #515151;
+    color: #f4f4f9;
+    width: 150px;
+    padding: 5px;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.show:hover {
+    background-color: #04724d;
+}
+
+.solution {
+    background: #04724d39;
+    text-align: center;
+    color: #586f7c;
+}
