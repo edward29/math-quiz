@@ -33,7 +33,7 @@ const hintNo = document.querySelector('#hintNo');
 
 let score = 0;
 let points = 0;
-let attempt = 0;
+let attempt = 3;
 
 function numbers() {
     n1 = parseInt(Math.floor(Math.random() * 100) + 1);
@@ -146,7 +146,7 @@ const colors = {
             msg.classList.remove('correct');
             msg.classList.add('wrong');
         }
-        attempt += 1;
+        attempt -= 1;
     }
 }
 
@@ -235,7 +235,7 @@ btn.addEventListener('click', () => {
 
     document.querySelector('#ans').value = '';
 
-    if (attempt === 3) {
+    if (attempt === 0) {
         setTimeout(() => {
             failed.style.display = 'grid';
         }, 1000);
