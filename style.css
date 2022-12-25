@@ -292,6 +292,7 @@ label {
     display: none;
     place-items: center;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background: #1d1e1dd4;
@@ -343,6 +344,7 @@ label {
     display: none;
     place-items: center;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background: #1d1e1dd4;
