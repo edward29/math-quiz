@@ -257,6 +257,7 @@ btn.addEventListener('click', () => {
     att.innerHTML = attempt;
     pts.innerHTML = points;
 });
+att.innerHTML = attempt;
 
 function closeFailed() {
     if (failed.style.display == 'grid') {
