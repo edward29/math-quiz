@@ -4,7 +4,8 @@ window.addEventListener('load', disapperIt);
 
 function disapperIt() {
     setTimeout(() => {
-        loader.classList.add("disappear");
+        // loader.classList.add("disappear");
+        loader.style.display = 'none';
     }, 3000);
 }
 

@@ -7,7 +7,7 @@
 
 body {
     font-family: sans-serif;
-    height: 90vh;
+    height: 100%;
     width: 100%;
     display: grid;
     place-items: center;
@@ -15,6 +15,7 @@ body {
 }
 
 .con {
+    margin-top: 10vh;
     width: 310px;
     height: auto;
     background: #f4f4f97d;
