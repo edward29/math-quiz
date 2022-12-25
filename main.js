@@ -1,3 +1,13 @@
+const loader = document.querySelector(".loader-wrap");
+
+window.addEventListener('load', disapperIt);
+
+function disapperIt() {
+    setTimeout(() => {
+        loader.classList.add("disappear");
+    }, 3000);
+}
+
 const dropdown = document.querySelector('#dropdown');
 const num1 = document.querySelector('#num1');
 const num2 = document.querySelector('#num2');
@@ -9,6 +19,10 @@ const solution = document.querySelector('#solution');
 const show = document.querySelector('#show');
 const pts = document.querySelector('#pts');
 const att = document.querySelector('#att');
+const failed = document.querySelector('#failed');
+const failed_btn = document.querySelector('#failed-btn');
+const passed = document.querySelector('#passed');
+const passed_btn = document.querySelector('#passed-btn');
 
 let score = 0;
 let points = 0;
@@ -62,13 +76,6 @@ show.addEventListener('click', () => {
         
     }
 
-    // if (score <= 0) {
-    //     alert('Game Over!');
-    //     location.reload();
-    // }
-
-    // totalScore.innerHTML = score;
-    // att.innerHTML = attempt;
     pts.innerHTML = points;
 });
 
@@ -110,9 +117,8 @@ const operators = {
             score += 2;
             colors.getCorrect();
         } else {
-            msg.innerHTML = `${ans} is the wrong answer<br>"Score - 2"`;
+            msg.innerHTML = `${ans} is the wrong answer`;
             numbers();
-            // score -= 2;
             colors.getWrong();
         }
     },
@@ -127,9 +133,8 @@ const operators = {
             score += 2;
             colors.getCorrect();
         } else {
-            msg.innerHTML = `${ans} is the wrong answer<br>"Score - 2"`;
+            msg.innerHTML = `${ans} is the wrong answer`;
             numbers();
-            // score -= 2;
             colors.getWrong();
         }
     },
@@ -144,9 +149,8 @@ const operators = {
             score += 5;
             colors.getCorrect();
         } else {
-            msg.innerHTML = `${ans} is the wrong answer<br>"Score - 3"`;
+            msg.innerHTML = `${ans} is the wrong answer`;
             numbers();
-            // score -= 3;
             colors.getWrong();
         }
     },
@@ -161,9 +165,8 @@ const operators = {
             score += 5;
             colors.getCorrect();
         } else {
-            msg.innerHTML = `${ans} is the wrong answer<br>"Score - 3"`;
+            msg.innerHTML = `${ans} is the wrong answer`;
             numbers();
-            // score -= 3;
             colors.getWrong();
         }
     }
@@ -187,14 +190,20 @@ btn.addEventListener('click', () => {
     document.querySelector('#ans').value = '';
 
     if (attempt === 3) {
-        alert('Failed!');
-        location.reload();
+        setTimeout(() => {
+            failed.style.display = 'grid';
+        }, 1000);
+        failed_btn.addEventListener('click', closeFailed);
+        failed.addEventListener('click', closeFailed);
     }
     
 
     if (score >= 50) {
-        alert("Passed!");
-        location.reload();
+        setTimeout(() => {
+            passed.style.display = 'grid';
+        }, 1000);
+        passed_btn.addEventListener('click', closePassed);
+        passed.addEventListener('click', closePassed);
     }
 
 
@@ -203,7 +212,23 @@ btn.addEventListener('click', () => {
     pts.innerHTML = points;
 });
 
+function closeFailed() {
+    if (failed.style.display == 'grid') {
+        failed.style.display = 'none';
+        location.reload();
+    } else {
+        failed.style.display = 'grid';
+    }
+}
 
+function closePassed() {
+    if (passed.style.display == 'grid') {
+        passed.style.display = 'none';
+        location.reload();
+    } else {
+        passed.style.display = 'grid';
+    }
+}
 
 
 dropdown.addEventListener("change", () => {

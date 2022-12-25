@@ -5,10 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loader.css">
     <link rel="stylesheet" href="digitalfont/stylesheet.css">
     <title>Math Quiz</title>
 </head>
 <body>
+    <div class="loader-wrap">
+        <div class="loader JS_on">
+            <span class="binary"></span>
+            <span class="binary"></span>
+            <span class="getting-there">LOADING STUFF...</span>
+        </div>
+    </div>
+
     <div class="con">
         <h1>Math Quiz</h1>
         <p>Choose an operator to answer the problem.</p>
@@ -50,6 +59,26 @@
         <div id="msg"></div>
         <div class="show" id="show">Show answer</div>
         <div class="solution" id="solution"></div>
+    </div>
+
+    <div class="failed-con" id="failed">
+        <div class="failed-btn" id="failed-btn">x</div>
+        <div class="failed">
+            <div class="failed-title">Failed</div>
+            <div class="failed-msg">
+                <p>It's natural to feel disappointed after failing a math quiz, but don't let this setback discourage you. Keep working hard and don't give up, you have the determination and ability to overcome this challenge and succeed in math.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="passed-con" id="passed">
+        <div class="passed-btn" id="passed-btn">x</div>
+        <div class="passed">
+            <div class="passed-title">Passed</div>
+            <div class="passed-msg">
+                <p>Congratulations on your quiz success! Your hard work and dedication have paid off, and you should be proud of yourself for your accomplishment. Keep up the good work and continue to strive for excellence. Well done!</p>
+            </div>
+        </div>
     </div>
 
       

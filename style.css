@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -283,4 +284,105 @@ label {
     background: #04724d39;
     text-align: center;
     color: #586f7c;
+}
+
+/* for fialed design */
+.failed-con {
+    display: none;
+    place-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1d1e1dd4;
+}
+
+.failed-con .failed-btn {
+    position: absolute;
+    right: 5%;
+    top: 1%;
+    color: #f4f4f9;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.failed-con .failed {
+    width: 300px;
+    height: auto;
+    background: #f4f4f9;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.failed .failed-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #c70f0f;
+    margin: 10px 0;
+    text-shadow: 1px 1px #000;
+}
+
+.failed .failed-msg {
+    padding: 20px;
+    background: #586f7c;
+}
+
+.failed .failed-msg p {
+    font-size: 1.3rem;
+    font-stretch: condensed;
+    text-align: justify;
+    color: #f4f4f9;
+}
+
+/* for passed design */
+.passed-con {
+    display: none;
+    place-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1d1e1dd4;
+}
+
+.passed-con .passed-btn {
+    position: absolute;
+    right: 5%;
+    top: 1%;
+    color: #f4f4f9;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.passed-con .passed {
+    width: 300px;
+    height: auto;
+    background: #f4f4f9;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.passed .passed-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #04724d;
+    margin: 10px 0;
+    text-shadow: 1px 1px #000;
+}
+
+.passed .passed-msg {
+    padding: 20px;
+    background: #02f1a2;
+}
+
+.passed .passed-msg p {
+    font-size: 1.3rem;
+    font-stretch: condensed;
+    text-align: justify;
+    color: #515151;
 }
