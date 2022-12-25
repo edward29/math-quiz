@@ -143,3 +143,14 @@
         opacity: 1;
     }
 }
+
+.disappear {
+    animation: hide 1s forwards;
+}
+
+@keyframes hide {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

@@ -4,8 +4,8 @@ window.addEventListener('load', disapperIt);
 
 function disapperIt() {
     setTimeout(() => {
-        // loader.classList.add("disappear");
-        loader.style.display = 'none';
+        loader.classList.add("disappear");
+        // loader.style.display = 'none';
     }, 3000);
 }
 
@@ -20,10 +20,16 @@ const solution = document.querySelector('#solution');
 const show = document.querySelector('#show');
 const pts = document.querySelector('#pts');
 const att = document.querySelector('#att');
+
 const failed = document.querySelector('#failed');
 const failed_btn = document.querySelector('#failed-btn');
 const passed = document.querySelector('#passed');
 const passed_btn = document.querySelector('#passed-btn');
+
+const hintMsg = document.querySelector('#hintMsg');
+const hintWrap = document.querySelector('#hintWrap');
+const hintYes = document.querySelector('#hintYes');
+const hintNo = document.querySelector('#hintNo');
 
 let score = 0;
 let points = 0;
@@ -59,27 +65,66 @@ function hint() {
         msg.innerHTML = "Please choose operator";
     }
 }
-    
 
 show.addEventListener('click', () => {
     if (show.innerHTML === 'Hide answer') {
         show.innerHTML = 'Show answer';
         solution.innerHTML = '';
-    } else if (score < 2) {
-        alert("You don't have enough points to get an answer\n\"You need 2 points to show the answer\"");
-    } else {
-        let question = confirm('To see the answer your points will be reduced by 2.\nDo you want to see the answer?')
-        if (question == false) {
-            return false;
+    } else if (points >= 2) {
+        if (hintWrap.style.display == 'none') {
+            hintWrap.style.display = 'flex';
+            hintMsg.innerHTML = 'To see the answer your points will be reduced by 2.<br><br>Do you want to see the answer?';
         } else {
-            hint();
+            hintWrap.style.display = 'none';
         }
-        
+    } else if (op.innerHTML == '_') {
+        if (hintWrap.style.display == 'none') {
+            hintWrap.style.display = 'flex';
+            hintMsg.innerHTML = 'Please choose operator';
+            hintNo.innerHTML = 'OK';
+            hintNo.style.width = '100%';
+            hintNo.style.background = '#1691d8';
+            hintYes.style.display = 'none';
+        } else {
+            hintWrap.style.display = 'none';
+        }
+    } else {
+        if (hintWrap.style.display == 'none') {
+            hintWrap.style.display = 'flex';
+            hintMsg.innerHTML = 'You don\'t have enough points to get an answer<br><br>You need "2 points" to show the answer';
+            hintNo.innerHTML = 'OK';
+            hintNo.style.width = '100%';
+            hintNo.style.background = '#1691d8';
+            hintYes.style.display = 'none';
+        } else {
+            hintWrap.style.display = 'none';
+        }
     }
-
+    
     pts.innerHTML = points;
 });
 
+hintYes.addEventListener('click', () => {
+    closeHint();
+    hint();
+});
+
+hintNo.addEventListener('click', () => {
+    closeHint();
+    hintNo.innerHTML = 'No';
+    hintNo.style.width = '50%';
+    hintNo.style.background = '#c70f0f';
+    hintYes.style.display = 'block';
+});
+
+
+function closeHint() {
+    if (hintWrap.style.display == 'flex') {
+        hintWrap.style.display = 'none';
+    } else {
+        hintWrap.style.display = 'flex';
+    }
+}
 let total;
 
 const colors = {
