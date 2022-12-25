@@ -7,9 +7,12 @@ const btn = document.querySelector('#submit');
 const totalScore = document.querySelector('#totalScore');
 const solution = document.querySelector('#solution');
 const show = document.querySelector('#show');
+const pts = document.querySelector('#pts');
+const att = document.querySelector('#att');
 
-
-var score = 5;
+let score = 0;
+let points = 0;
+let attempt = 0;
 
 function numbers() {
     n1 = parseInt(Math.floor(Math.random() * 100) + 1);
@@ -24,49 +27,49 @@ function hint() {
     if (op.innerHTML === '+') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 + n2}</span>`;
-        score -= 4;
+        points -= 2;
     } else if (op.innerHTML === '−') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 - n2}</span>`;
-        score -= 4;
+        points -= 2;
     } else if (op.innerHTML === '×') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 * n2}</span>`;
-        score -= 4;
+        points -= 2;
     } else if (op.innerHTML === '÷') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${(n1 / n2).toFixed(2)}</span>`;
-        score -= 4;
+        points -= 2;
     } else {
         msg.innerHTML = "Please choose operator";
     }
-}      
+}
     
 
 show.addEventListener('click', () => {
     if (show.innerHTML === 'Hide answer') {
         show.innerHTML = 'Show answer';
         solution.innerHTML = '';
-    } else if (score < 4) {
-        alert("You don't have enough score to get an answer");
+    } else if (score < 2) {
+        alert("You don't have enough points to get an answer\n\"You need 2 points to show the answer\"");
     } else {
-        let question = confirm('To see the answer your score will be reduced by 4.\nDo you want to see the answer?')
+        let question = confirm('To see the answer your points will be reduced by 2.\nDo you want to see the answer?')
         if (question == false) {
             return false;
         } else {
-            // show.innerHTML = 'Hide answer';
             hint();
         }
         
     }
 
-    if (score <= 0) {
-        alert('Game Over!');
-        location.reload();
-    }
+    // if (score <= 0) {
+    //     alert('Game Over!');
+    //     location.reload();
+    // }
 
-    totalScore.innerHTML = score;
-
+    // totalScore.innerHTML = score;
+    // att.innerHTML = attempt;
+    pts.innerHTML = points;
 });
 
 let total;
@@ -80,6 +83,7 @@ const colors = {
             msg.classList.remove('wrong');
             msg.classList.add('correct');
         }
+        points += 1;
     },
     getWrong() {
         if (!msg.classList.contains('correct')) {
@@ -89,6 +93,7 @@ const colors = {
             msg.classList.remove('correct');
             msg.classList.add('wrong');
         }
+        attempt += 1;
     }
 }
 
@@ -107,7 +112,7 @@ const operators = {
         } else {
             msg.innerHTML = `${ans} is the wrong answer<br>"Score - 2"`;
             numbers();
-            score -= 2;
+            // score -= 2;
             colors.getWrong();
         }
     },
@@ -124,7 +129,7 @@ const operators = {
         } else {
             msg.innerHTML = `${ans} is the wrong answer<br>"Score - 2"`;
             numbers();
-            score -= 2;
+            // score -= 2;
             colors.getWrong();
         }
     },
@@ -141,7 +146,7 @@ const operators = {
         } else {
             msg.innerHTML = `${ans} is the wrong answer<br>"Score - 3"`;
             numbers();
-            score -= 3;
+            // score -= 3;
             colors.getWrong();
         }
     },
@@ -158,9 +163,8 @@ const operators = {
         } else {
             msg.innerHTML = `${ans} is the wrong answer<br>"Score - 3"`;
             numbers();
-            score -= 3;
+            // score -= 3;
             colors.getWrong();
-            console.log(total.toFixed(2));
         }
     }
 }
@@ -182,12 +186,21 @@ btn.addEventListener('click', () => {
 
     document.querySelector('#ans').value = '';
 
-    if (score <= 0) {
-        alert('Game Over!');
+    if (attempt === 3) {
+        alert('Failed!');
         location.reload();
     }
     
+
+    if (score >= 50) {
+        alert("Passed!");
+        location.reload();
+    }
+
+
     totalScore.innerHTML = score;
+    att.innerHTML = attempt;
+    pts.innerHTML = points;
 });
 
 
@@ -205,8 +218,6 @@ dropdown.addEventListener("change", () => {
     } else if (selectedValue == "div") {
         op.innerHTML = '&#247';
     } else {
-        op.innerHTML = '__';
+        op.innerHTML = '_';
     }
-    
-    console.log(op.innerHTML);
 });

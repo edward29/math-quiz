@@ -55,17 +55,23 @@ h1 {
 #num2,
 #ans,
 #op,
-#sol {
+#so,
+#pts,
+#att {
     font-family: 'technologyregular', Arial, sans-serif;
     font-weight: 800;
 }
 
 .score {
-    padding: 10px 30px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
 }
 
-.score #score {
-    font-size: 2rem;
+.score #score,
+.score #points,
+.score #attempt {
+    font-size: 1rem;
 }
 
 .numbers {
