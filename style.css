@@ -58,7 +58,6 @@ h1 {
 #ans,
 #op,
 #so,
-#pts,
 #att {
     font-family: 'technologyregular', Arial, sans-serif;
     font-weight: 800;
@@ -66,14 +65,14 @@ h1 {
 
 .score {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin: 20px 0;
 }
 
 .score #score,
 .score #points,
 .score #attempt {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .numbers {
@@ -451,11 +450,3 @@ label {
 #hintNo {
     background: #c70f0f;
 }
-
-/* .hint-wrap.show-it {
-    display: grid;
-}
-
-.hint-wrap.hide-it {
-    display: none;
-} */

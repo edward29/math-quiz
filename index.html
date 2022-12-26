@@ -30,7 +30,6 @@
         </select>
         <div class="score">
             <div id="score">Score: <span id="totalScore">0</span></div>
-            <div id="points">Points: <span id="pts">0</span></div>
             <div id="attempt">Attempt: <span id="att"></span></div>
         </div>
         <div class="number">
@@ -39,7 +38,6 @@
                 <span id="op">_</span>
                 <span id="num2"></span>
                 <span>=</span>
-                <!-- <input type="text" id="ans" placeholder=""> -->
             </div>
             <div class="group">
                 <input type="text" id="ans" class="input" required="">
@@ -47,7 +45,6 @@
                 <span class="bar"></span>
                 <label>Enter your answer</label>
               </div>
-            <!-- <button id="submit">Check answer</button> -->
             <button id="submit" class="cta">
                 <span>Check answer</span>
                 <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -79,7 +76,7 @@
         <div class="failed">
             <div class="failed-title">Failed</div>
             <div class="failed-msg">
-                <p>It's natural to feel disappointed after failing a math quiz, but don't let this setback discourage you. Keep working hard and don't give up, you have the determination and ability to overcome this challenge and succeed in math.</p>
+                <p id="failedMsg"></p>
             </div>
         </div>
     </div>
@@ -89,7 +86,7 @@
         <div class="passed">
             <div class="passed-title">Passed</div>
             <div class="passed-msg">
-                <p>Congratulations on your quiz success! Your hard work and dedication have paid off, and you should be proud of yourself for your accomplishment. Keep up the good work and continue to strive for excellence. Well done!</p>
+                <p id="passedMsg"></p>
             </div>
         </div>
     </div>

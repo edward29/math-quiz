@@ -1,3 +1,4 @@
+// Start of loader
 const loader = document.querySelector(".loader-wrap");
 
 window.addEventListener('load', disapperIt);
@@ -5,20 +6,21 @@ window.addEventListener('load', disapperIt);
 function disapperIt() {
     setTimeout(() => {
         loader.classList.add("disappear");
-        // loader.style.display = 'none';
     }, 3000);
 }
+// end of loader
 
+// selection of html tag
 const dropdown = document.querySelector('#dropdown');
 const num1 = document.querySelector('#num1');
 const num2 = document.querySelector('#num2');
 const op = document.querySelector('#op');
 const msg = document.querySelector('#msg');
 const btn = document.querySelector('#submit');
-const totalScore = document.querySelector('#totalScore');
 const solution = document.querySelector('#solution');
 const show = document.querySelector('#show');
-const pts = document.querySelector('#pts');
+
+const totalScore = document.querySelector('#totalScore');
 const att = document.querySelector('#att');
 
 const failed = document.querySelector('#failed');
@@ -31,10 +33,13 @@ const hintWrap = document.querySelector('#hintWrap');
 const hintYes = document.querySelector('#hintYes');
 const hintNo = document.querySelector('#hintNo');
 
+const failedMsg = document.querySelector('#failedMsg');
+const passedMsg = document.querySelector('#passedMsg');
+
 let score = 0;
-let points = 0;
 let attempt = 3;
 
+// generate random numbers
 function numbers() {
     n1 = parseInt(Math.floor(Math.random() * 100) + 1);
     n2 = parseInt(Math.floor(Math.random() * 100) + 1);
@@ -43,41 +48,86 @@ function numbers() {
 }
 numbers();
 
+// give the answer
 function hint() {
     
     if (op.innerHTML === '+') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 + n2}</span>`;
-        points -= 2;
+        score -= 2;
     } else if (op.innerHTML === '−') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 - n2}</span>`;
-        points -= 2;
+        score -= 2;
     } else if (op.innerHTML === '×') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 * n2}</span>`;
-        points -= 2;
+        score -= 5;
     } else if (op.innerHTML === '÷') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${(n1 / n2).toFixed(2)}</span>`;
-        points -= 2;
+        score -= 5;
     } else {
         msg.innerHTML = "Please choose operator";
     }
 }
 
+// it shows before give the answer
+const hintDisplay = {
+    getAddSub() {
+        if (score >= 2) {
+            if (hintWrap.style.display == 'none') {
+                hintWrap.style.display = 'flex';
+                hintMsg.innerHTML = 'To see the answer your score will be reduced by 2.<br><br>Do you want to see the answer?';
+            } else {
+                hintWrap.style.display = 'none';
+            }
+        } else {
+            if (hintWrap.style.display == 'none') {
+                hintWrap.style.display = 'flex';
+                hintMsg.innerHTML = 'You don\'t have enough score to get an answer<br><br>You need "2 score" to show the answer';
+                hintNo.innerHTML = 'OK';
+                hintNo.style.width = '100%';
+                hintNo.style.background = '#1691d8';
+                hintYes.style.display = 'none';
+            } else {
+                hintWrap.style.display = 'none';
+            }
+        }
+    }, 
+    getMultDiv() {
+        if (score >= 5) {
+            if (hintWrap.style.display == 'none') {
+                hintWrap.style.display = 'flex';
+                hintMsg.innerHTML = 'To see the answer your score will be reduced by 5.<br><br>Do you want to see the answer?';
+            } else {
+                hintWrap.style.display = 'none';
+            }
+        } else {
+            if (hintWrap.style.display == 'none') {
+                hintWrap.style.display = 'flex';
+                hintMsg.innerHTML = 'You don\'t have enough score to get an answer<br><br>You need "5 score" to show the answer';
+                hintNo.innerHTML = 'OK';
+                hintNo.style.width = '100%';
+                hintNo.style.background = '#1691d8';
+                hintYes.style.display = 'none';
+            } else {
+                hintWrap.style.display = 'none';
+            }
+        }
+    }
+}
+
+// answer button
 show.addEventListener('click', () => {
     if (show.innerHTML === 'Hide answer') {
         show.innerHTML = 'Show answer';
         solution.innerHTML = '';
-    } else if (points >= 2) {
-        if (hintWrap.style.display == 'none') {
-            hintWrap.style.display = 'flex';
-            hintMsg.innerHTML = 'To see the answer your points will be reduced by 2.<br><br>Do you want to see the answer?';
-        } else {
-            hintWrap.style.display = 'none';
-        }
-    } else if (op.innerHTML == '_') {
+    } else if (op.innerHTML == '+' || op.innerHTML == '−') {
+        hintDisplay.getAddSub();
+    } else if (op.innerHTML == '×' || op.innerHTML == '÷') {
+        hintDisplay.getMultDiv();
+    } else {
         if (hintWrap.style.display == 'none') {
             hintWrap.style.display = 'flex';
             hintMsg.innerHTML = 'Please choose operator';
@@ -88,22 +138,10 @@ show.addEventListener('click', () => {
         } else {
             hintWrap.style.display = 'none';
         }
-    } else {
-        if (hintWrap.style.display == 'none') {
-            hintWrap.style.display = 'flex';
-            hintMsg.innerHTML = 'You don\'t have enough points to get an answer<br><br>You need "2 points" to show the answer';
-            hintNo.innerHTML = 'OK';
-            hintNo.style.width = '100%';
-            hintNo.style.background = '#1691d8';
-            hintYes.style.display = 'none';
-        } else {
-            hintWrap.style.display = 'none';
-        }
     }
-    
-    pts.innerHTML = points;
 });
 
+// hint buttons
 hintYes.addEventListener('click', () => {
     closeHint();
     hint();
@@ -127,6 +165,7 @@ function closeHint() {
 }
 let total;
 
+// give the color to result
 const colors = {
     getCorrect() {
         if (!msg.classList.contains('correct')) {
@@ -136,7 +175,6 @@ const colors = {
             msg.classList.remove('wrong');
             msg.classList.add('correct');
         }
-        points += 1;
     },
     getWrong() {
         if (!msg.classList.contains('correct')) {
@@ -150,6 +188,7 @@ const colors = {
     }
 }
 
+// all operators and computations
 const operators = {
     
     getAddition() {
@@ -218,7 +257,27 @@ const operators = {
     }
 }
 
+// failed and passed massage
+const failedPassed = {
+    getCloseFailed() {
+        if (failed.style.display == 'grid') {
+            failed.style.display = 'none';
+            location.reload();
+        } else {
+            failed.style.display = 'grid';
+        }
+    },
+    getClosePassed() {
+        if (passed.style.display == 'grid') {
+            passed.style.display = 'none';
+            location.reload();
+        } else {
+            passed.style.display = 'grid';
+        }
+    }
+}
 
+// button for checking answer
 btn.addEventListener('click', () => {
 
     if (op.innerHTML === '+') {
@@ -239,45 +298,26 @@ btn.addEventListener('click', () => {
         setTimeout(() => {
             failed.style.display = 'grid';
         }, 1000);
-        failed_btn.addEventListener('click', closeFailed);
-        failed.addEventListener('click', closeFailed);
+        failedMsg.innerHTML = "It's natural to feel disappointed after failing a math quiz, but don't let this setback discourage you. Keep working hard and don't give up, you have the determination and ability to overcome this challenge and succeed in math.";
+        failed_btn.addEventListener('click', failedPassed.getCloseFailed);
+        failed.addEventListener('click', failedPassed.getCloseFailed);
     }
     
-
-    if (score >= 50) {
+    if (score >= 2) {
         setTimeout(() => {
             passed.style.display = 'grid';
         }, 1000);
-        passed_btn.addEventListener('click', closePassed);
-        passed.addEventListener('click', closePassed);
+        passedMsg.innerHTML = "Congratulations on your quiz success! Your hard work and dedication have paid off, and you should be proud of yourself for your accomplishment. Keep up the good work and continue to strive for excellence. Well done!";
+        passed_btn.addEventListener('click', failedPassed.getClosePassed);
+        passed.addEventListener('click', failedPassed.getClosePassed);
     }
-
 
     totalScore.innerHTML = score;
     att.innerHTML = attempt;
-    pts.innerHTML = points;
 });
 att.innerHTML = attempt;
 
-function closeFailed() {
-    if (failed.style.display == 'grid') {
-        failed.style.display = 'none';
-        location.reload();
-    } else {
-        failed.style.display = 'grid';
-    }
-}
-
-function closePassed() {
-    if (passed.style.display == 'grid') {
-        passed.style.display = 'none';
-        location.reload();
-    } else {
-        passed.style.display = 'grid';
-    }
-}
-
-
+// operator dropdown
 dropdown.addEventListener("change", () => {
     let selectedValue = dropdown.value;
 
