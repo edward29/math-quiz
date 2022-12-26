@@ -1,3 +1,15 @@
+// Start of loader
+const loader = document.querySelector(".loader-wrap");
+
+window.addEventListener('load', disapperIt);
+
+function disapperIt() {
+    setTimeout(() => {
+        loader.classList.add("disappear");
+    }, 3000);
+}
+// end of loader
+
 // selection of html tag
 const mainCon = document.querySelector('#mainCon');
 const dropdown = document.querySelector('#dropdown');
