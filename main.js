@@ -11,6 +11,7 @@ function disapperIt() {
 // end of loader
 
 // selection of html tag
+const mainCon = document.querySelector('#mainCon');
 const dropdown = document.querySelector('#dropdown');
 const num1 = document.querySelector('#num1');
 const num2 = document.querySelector('#num2');
@@ -35,6 +36,21 @@ const hintNo = document.querySelector('#hintNo');
 
 const failedMsg = document.querySelector('#failedMsg');
 const passedMsg = document.querySelector('#passedMsg');
+
+const insCon = document.querySelector('#insCon');
+const insOk = document.querySelector('#insOk');
+
+// instructions
+insOk.addEventListener('click', () => {
+    if (insCon.style.display == 'block') {
+        insCon.style.display = 'none';
+        mainCon.style.display = 'block'
+    } else {
+        insCon.style.display = 'block';
+        mainCon.style.display = 'none';
+    }
+});
+
 
 let score = 0;
 let attempt = 3;
@@ -303,7 +319,7 @@ btn.addEventListener('click', () => {
         failed.addEventListener('click', failedPassed.getCloseFailed);
     }
     
-    if (score >= 2) {
+    if (score >= 50) {
         setTimeout(() => {
             passed.style.display = 'grid';
         }, 1000);
