@@ -86,6 +86,7 @@ function hint() {
     } else {
         msg.innerHTML = "Please choose operator";
     }
+    totalScore.innerHTML = score;
 }
 
 // it shows before give the answer
