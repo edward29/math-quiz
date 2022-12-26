@@ -101,5 +101,18 @@
 
       
     <script src="main.js"></script>
+    <script>
+        // Start of loader
+        const loader = document.querySelector(".loader-wrap");
+
+        window.addEventListener('load', disapperIt);
+
+        function disapperIt() {
+            setTimeout(() => {
+                loader.classList.add("disappear");
+            }, 3000);
+        }
+        // end of loader
+    </script>
 </body>
 </html>
