@@ -1,12 +1,10 @@
 # math-quiz
 
-# This is a simple math quiz game with a default score of 5. 
+# This is a math quiz. 
 
-#Plus 2 score if the additon or substruction answer is correct and if it is wrong you will deduct 2 from the score.
-
-#In multiplication and division, it's plus 5 if it's right and if it's wrong, you'll lose 3 from the score.
-
-#If you want to see the answer right away, you will lose 4 in the score.
+# You have three attempts, and if you use them all, you will fail the quiz, but if you score "50" or more, you will pass. 
+# Before you begin, you must select an operator; each operator will be assigned a different score: 2 points for addition and subtraction, 5 points for multiplication and division.
+# There is also a "show answer" button if you really don't know the solution; you can show the answer as long as you have 2 or more scores for addition and subtraction and 5 or more scores for multiplication and division.
 
 # Created by Edward Caacbay
 # Since: 12/24/22
