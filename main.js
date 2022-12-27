@@ -70,11 +70,11 @@ function hint() {
     if (op.innerHTML === '+') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 + n2}</span>`;
-        score -= 2;
+        score -= 3;
     } else if (op.innerHTML === '−') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 - n2}</span>`;
-        score -= 2;
+        score -= 3;
     } else if (op.innerHTML === '×') {
         show.innerHTML = 'Hide answer';
         solution.innerHTML= `Solution: <span id="sol">${n1} ${op.innerHTML} ${n2} = ${n1 * n2}</span>`;
@@ -92,17 +92,17 @@ function hint() {
 // it shows before give the answer
 const hintDisplay = {
     getAddSub() {
-        if (score >= 2) {
+        if (score >= 3) {
             if (hintWrap.style.display == 'none') {
                 hintWrap.style.display = 'flex';
-                hintMsg.innerHTML = 'To see the answer your score will be reduced by 2.<br><br>Do you want to see the answer?';
+                hintMsg.innerHTML = 'To see the answer your score will be reduced by 3.<br><br>Do you want to see the answer?';
             } else {
                 hintWrap.style.display = 'none';
             }
         } else {
             if (hintWrap.style.display == 'none') {
                 hintWrap.style.display = 'flex';
-                hintMsg.innerHTML = 'You don\'t have enough score to get an answer<br><br>You need "2 score" to show the answer';
+                hintMsg.innerHTML = 'You don\'t have enough score to get an answer<br><br>You need "3 score" to show the answer';
                 hintNo.innerHTML = 'OK';
                 hintNo.style.width = '100%';
                 hintNo.style.background = '#1691d8';
@@ -246,9 +246,9 @@ const operators = {
         total = n1 * n2;
         
         if (ans === total) {
-            msg.innerHTML = `${ans} is the correct answer<br>"Score + 5"`;
+            msg.innerHTML = `${ans} is the correct answer<br>"Score + 4"`;
             numbers();
-            score += 5;
+            score += 4;
             colors.getCorrect();
         } else {
             msg.innerHTML = `${ans} is the wrong answer`;
@@ -262,9 +262,9 @@ const operators = {
         total = n1 / n2;
         
         if (ans.toFixed(2) === total.toFixed(2)) {
-            msg.innerHTML = `${ans} is the correct answer<br>"Score + 5"`;
+            msg.innerHTML = `${ans} is the correct answer<br>"Score + 4"`;
             numbers();
-            score += 5;
+            score += 4;
             colors.getCorrect();
         } else {
             msg.innerHTML = `${ans} is the wrong answer`;
